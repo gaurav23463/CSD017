@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Maths Test</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<script>
+    const express = require('express');
+const bodyParser = require('body-parser');
+const path = require('path');
+
+const app = express();
+const PORT = process.env.PORT || 3000;
+
+
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(express.static(path.join(__dirname, 'public')));
+
+app.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public', 'index.html'));
+});
+
+app.post('/submit', (req, res) => {
+    const answers = {
+        question1: 20, 
+        question2: 34, 
+        question3: 5, 
+        question4: 68, 
+        question5: 75, 
+        question6: 8, 
+        question7: 11, 
+        question8: 133, 
+        question9: 124, 
+        question10: 3, 
+        question11: 56, 
+        question12: 3, 
+        question13: 5, 
+        question14: 20,
+        question15: 246, 
+    };
+
+    let score = 0;
+    if (parseInt(req.body.question1) === answers.question1) score++;
+    if (parseInt(req.body.question2) === answers.question2) score++;
+    if (parseInt(req.body.question3) === answers.question3) score++;
+
+    res.send(<h1>Your score is ${score}/3</h1><a href="/">Take the test again</a>);
+});
+
+app.listen(PORT, () => {
+    console.log(Server is running on http:
+});
+
+</script>
+<body>
+    <div class="container">
+        <h1>PLAY WITH NUMBERS-2</h1>
+        <form id="maths-test" action="/submit" method="POST">
+            <label for="question1">1. What is 5 * 4?</label>
+            <input type="number" id="question1" name="question1" required>
+
+            <label for="question2">2. What is 7 * 12?</label>
+            <input type="number" id="question2" name="question2" required>
+
+            <label for="question3">3. What is 65 ÷ 13 ?</label>
+            <input type="number" id="question3" name="question3" required>
+
+            <label for="question4">4. What is 17 * 4?</label>
+            <input type="number" id="question4" name="question4" required>
+
+            <label for="question5">5. What is 15 * 5?</label>
+            <input type="number" id="question5" name="question5" required>
+
+            <label for="question6">6. What is 32 ÷ 4?</label>
+            <input type="number" id="question6" name="question6" required>
+
+            <label for="question7">7. What is 121 ÷ 11?</label>
+            <input type="number" id="question7" name="question7" required>
+
+            <label for="question8">8. What is 19 * 7?</label>
+            <input type="number" id="question8" name="question8" required>
+
+            <label for="question9">9. What is 31 * 4?</label>
+            <input type="number" id="question9" name="question9" required>
+
+            <label for="question10">10. What is 63 ÷ 21?</label>
+            <input type="number" id="question10" name="question10" required>
+
+            <label for="question11">11. What is 7 * 8?</label>
+            <input type="number" id="question11" name="question11" required>
+
+            <label for="question12">12. What is 21 ÷ 7?</label>
+            <input type="number" id="question12" name="question12" required>
+
+            <label for="question13">13. What is 75 ÷ 15?</label>
+            <input type="number" id="question13" name="question13" required>
+
+            <label for="question14">14. What is 100 ÷ 5?</label>
+            <input type="number" id="question14" name="question14" required>
+
+            <label for="question15">15. What is 41 * 6?</label>
+            <input type="number" id="question15" name="question15" required>
+
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+</body>
+</html>

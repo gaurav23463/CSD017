@@ -1,0 +1,66 @@
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learning Platform</title>
+    <style>
+        
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #e6e0ae;
+            color: #211c1c;
+            text-align: center;
+            padding: 40px;
+            margin: 0;
+        }
+        fieldset {
+            border: 2px solid #ba2d8b;
+            border-radius: 10px;
+            margin: 20px auto;
+            padding: 20px;
+            width: 300px;
+            background-color: white;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        h1 {
+            color: #ff0000;
+            font-size: 24px;
+            margin: 0;
+        }
+        @media (max-width: 400px) {
+            fieldset {
+                width: 90%;
+            }
+        }
+        button {
+            padding: 10px 20px;
+            margin-top: 10px;
+            border: none;
+            border-radius: 5px;
+            background-color: #dd7616;
+            color: white;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #d46810;
+        }
+    </style>
+</head>
+<body>
+    <fieldset>
+        <h1><a href="TEST.HTML">LECTURES</a></h1>
+        <button onclick="alert('Welcome to the Lecture!')">Start Lecture</button>
+    </fieldset>
+    <fieldset>
+        <h1><a href="testcopy.html">TEST</a></h1>
+        <button onclick="alert('Good luck with the Test!')">Take Test</button>
+    </fieldset>
+    <fieldset>
+        <h1><a href="engact.mp4"> FUN ACTIVITIES</a></h1>
+        <button onclick="alert('Let’s Play Games!')">Play Games</button>
+    </fieldset>
+</body>
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Maths Test</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<script>
+    const express = require('express');
+const bodyParser = require('body-parser');
+const path = require('path');
+
+const app = express();
+const PORT = process.env.PORT || 3000;
+
+
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(express.static(path.join(__dirname, 'public')));
+
+
+app.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public', 'index.html'));
+});
+
+app.post('/submit', (req, res) => {
+    const answers = {
+        question1: 9,
+        question2: 1,
+        question3: 7,
+        question4: 4,
+        question5: 43,
+        
+    };
+
+    let score = 0;
+    if (parseInt(req.body.question1) === answers.question1) score++;
+    if (parseInt(req.body.question2) === answers.question2) score++;
+    if (parseInt(req.body.question3) === answers.question3) score++;
+
+    res.send(<h1>Your score is ${score}/3</h1><a href="/">Take the test again</a>);
+});
+
+
+app.listen(PORT, () => {
+    console.log(Server is running on http:
+});
+
+</script>
+<body>
+    <div class="container">
+        <h1>WORD PROBLEMS</h1>
+        <form id="maths-test" action="/submit" method="POST">
+            <label for="question1">1.If you have 2 mango, 3 apple, 4 banana, then total how many fruits you have?</label>
+            <input type="number" id="question1" name="question1" required>
+
+            <label for="question2">2.If you have 3 apple and you 2 apple to me then how many apple left?</label>
+            <input type="number" id="question2" name="question2" required>
+
+            <label for="question3">3. You already have 3 bananas and add more 4, how many bananas you have now?</label>
+            <input type="number" id="question3" name="question3" required>
+
+            <label for="question4">4 .7 birds sitting on a tree, 3 flew away, how many left?</label>
+            <input type="number" id="question4" name="question4" required>
+
+            <label for="question5">5. There are 51 students in a class, 8 are absent, how many are present?</label>
+            <input type="number" id="question5" name="question5" required>
+
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+</body>
+</html>

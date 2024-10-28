@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> gk test</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<script>
+    const express = require('express');
+const bodyParser = require('body-parser');
+const path = require('path');
+
+const app = express();
+const PORT = process.env.PORT || 3000;
+
+// Middleware
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(express.static(path.join(__dirname, 'public')));
+
+// Routes
+app.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public', 'index.html'));
+});
+
+app.post('/submit', (req, res) => {
+    const answers = {
+        question1: Blue whale ,
+        question2: Mars,
+        question3: Seven ,
+        question4: Diamond,
+        question5: Dog,
+        question6: Pacific Ocean , 
+        question7: Mammal 
+        question8:  Sun ,
+        question9: Lion ,
+        question10: Elephant,
+    
+    };
+
+    let score = 0;
+    if (parseInt(req.body.question1) === answers.question1) score++;
+    if (parseInt(req.body.question2) === answers.question2) score++;
+    if (parseInt(req.body.question3) === answers.question3) score++;
+
+    res.send(<h1>Your score is ${score}/3</h1><a href="/">Take the test again</a>);
+});
+
+// Start server
+app.listen(PORT, () => {
+    console.log(Server is running on http://localhost:${PORT});
+});
+
+</script>
+<body>
+    <div class="container">
+        <h1>GENERAL KNOWLEDGE</h1>
+        <form id="maths-test" action="/submit" method="POST">
+            <label for="question1">1.What is the largest mammal in the world? ?</label>
+            <input type="alphabet" id="question1" name="question1" required>
+
+            <label for="question2">2. What planet is known as the Red Planet??</label>
+            <input type="alphabet" id="question2" name="question2" required>
+
+            <label for="question3">3. How many colors are there in a rainbow??</label>
+            <input type="alphabet" id="question3" name="question3" required>
+
+            <label for="question4">4.What is the hardest natural substance on Earth? ?</label>
+            <input type="alphabet" id="question4" name="question4" required>
+
+            <label for="question5">5. What animal is known as "man's best friend"??</label>
+            <input type="alphabet" id="question5" name="question5" required>
+
+            <label for="question6">6. What is the name of the ocean that is the largest in the world??</label>
+            <input type="alphabet" id="question6" name="question6" required>
+
+            <label for="question7">7.  What type of animal is a dolphin??</label>
+            <input type="alphabet" id="question7" name="question7" required>
+
+            <label for="question8">8. What is the main source of energy for the Earth??</label>
+            <input type="alphabet" id="question8" name="question8" required>
+
+            <label for="question9">9. What animal is known as the king of the jungle??</label>
+            <input type="alphabet" id="question9" name="question9" required>
+
+            <label for="question10">10.Which animal has a long trunk and lives in the jungle??</label>
+            <input type="alphabet" id="question10" name="question10" required>
+
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+</body>
+</html>
